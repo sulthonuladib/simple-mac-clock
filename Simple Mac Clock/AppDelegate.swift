@@ -24,6 +24,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             userInfo: nil,
             repeats: true
         )
+        
+        RunLoop.main.add(timer!, forMode: .common)
+        
     }
     
     @objc
@@ -33,6 +36,4 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print(Date.now.stringTimeWithSeconds)
     }
 
-
 }
-
