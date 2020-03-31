@@ -10,14 +10,27 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
     var statusBarItem: NSStatusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-
+    var timer: Timer? = nil
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
         guard let statusButton = statusBarItem.button else { return }
-        statusButton.title = "Simple Mac Clock"
+        statusButton.title = Date.now.stringTimeWithSeconds
         
+        timer = Timer.scheduledTimer(
+            timeInterval: 1,
+            target: self,
+            selector: #selector(updateStatusText),
+            userInfo: nil,
+            repeats: true
+        )
+    }
+    
+    @objc
+    func updateStatusText(_ sender: Timer) {
+        guard let statusButton = statusBarItem.button else { return }
+        statusButton.title = Date.now.stringTimeWithSeconds
+        print(Date.now.stringTimeWithSeconds)
     }
 
 
