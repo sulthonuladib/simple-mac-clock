@@ -11,7 +11,7 @@ import Foundation
 extension Int {
     
     var safeString: String {
-        return self >= 10 ? "\(self)" : "0\(self"
+        return self >= 10 ? "\(self)" : "0\(self)"
     }
     
 }
